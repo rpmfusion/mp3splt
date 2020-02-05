@@ -1,7 +1,7 @@
 Summary:   A Free, command-line, AlbumWrap and mp3wrap file exctractor
 Name:      mp3splt
 Version:   2.6.2
-Release:   7%{?dist}
+Release:   8%{?dist}
 License:   GPLv2
 Group:     Applications/Multimedia
 Source:    http://download.sourceforge.net/sourceforge/mp3splt/mp3splt-%{version}.tar.gz
@@ -52,6 +52,9 @@ rm -rf %{buildroot}
 %{_mandir}/man1/oggsplt.1.gz
 
 %changelog
+* Wed Feb 05 2020 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 2.6.2-8
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild
+
 * Fri Aug 09 2019 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 2.6.2-7
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_31_Mass_Rebuild
 
