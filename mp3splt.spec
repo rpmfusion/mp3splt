@@ -1,11 +1,11 @@
 Summary:   A Free, command-line, AlbumWrap and mp3wrap file exctractor
 Name:      mp3splt
 Version:   2.6.2
-Release:   13%{?dist}
+Release:   14%{?dist}
 License:   GPLv2
-Group:     Applications/Multimedia
-Source:    http://download.sourceforge.net/sourceforge/mp3splt/mp3splt-%{version}.tar.gz
 URL:       http://mp3splt.sourceforge.net/
+Source:    http://download.sourceforge.net/sourceforge/mp3splt/mp3splt-%{version}.tar.gz
+Patch0:    v0.9.2..385d2001_2020-11-10.patch
 BuildRequires: libmp3splt-devel > 0.7.0
 BuildRequires: libtool-ltdl-devel
 BuildRequires: gettext
@@ -25,22 +25,21 @@ from Mp3Wrap or AlbumWrap files in a few seconds.
 
 %prep
 %setup -q
+%patch0 -p2
 %{_bindir}/iconv -f iso8859-1 -t utf8 AUTHORS -o AUTHORS.txt
 touch -r AUTHORS AUTHORS.txt
 mv AUTHORS.txt AUTHORS
 
 %build
+autoreconf -ivf
 %configure --enable-oggsplt_symlink --disable-static
 
-%__make %{?_smp_mflags}
+%make_build
 
 %install
-make install DESTDIR=%{buildroot}
+%make_install
 
 %find_lang %{name}
-
-%clean
-rm -rf %{buildroot}
 
 %files -f %{name}.lang
 %defattr (-,root,root,-)
@@ -52,6 +51,9 @@ rm -rf %{buildroot}
 %{_mandir}/man1/oggsplt.1.gz
 
 %changelog
+* Mon Mar 06 2023 Sérgio Basto <sergio@serjux.com> - 2.6.2-14
+- Update to last git snapshot from https://github.com/mp3splt/mp3splt
+
 * Sun Aug 07 2022 RPM Fusion Release Engineering <sergiomb@rpmfusion.org> - 2.6.2-13
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild and ffmpeg
   5.1
