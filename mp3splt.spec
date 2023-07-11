@@ -10,6 +10,7 @@ BuildRequires: libmp3splt-devel > 0.7.0
 BuildRequires: libtool-ltdl-devel
 BuildRequires: gettext
 BuildRequires: gcc
+BuildRequires: autoconf automake libtool gettext-devel
 
 %description
 Mp3Splt is a command line utility to split mp3 and ogg files,
