@@ -26,7 +26,7 @@ from Mp3Wrap or AlbumWrap files in a few seconds.
 
 %prep
 %setup -q
-%patch0 -p2
+%patch -P0 -p2
 %{_bindir}/iconv -f iso8859-1 -t utf8 AUTHORS -o AUTHORS.txt
 touch -r AUTHORS AUTHORS.txt
 mv AUTHORS.txt AUTHORS
